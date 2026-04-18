@@ -55,56 +55,57 @@
   {
     "type": "block",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "expr_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
-          "named": true
-        },
-        {
-          "type": "func_decl",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "print_statement",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "var_decl",
-          "named": true
-        },
-        {
-          "type": "while_statement",
-          "named": true
-        }
-      ]
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "break_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "expr_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "func_decl",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "print_statement",
+            "named": true
+          },
+          {
+            "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "var_decl",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -159,6 +160,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "lambda",
+          "named": true
+        },
         {
           "type": "or",
           "named": true
@@ -234,61 +239,68 @@
   {
     "type": "for_statement",
     "named": true,
-    "fields": {},
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "break_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "expr_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "func_decl",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "print_statement",
+            "named": true
+          },
+          {
+            "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "var_decl",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "expr_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
-          "named": true
-        },
-        {
-          "type": "func_decl",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "print_statement",
-          "named": true
-        },
-        {
           "type": "range",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "var_decl",
-          "named": true
-        },
-        {
-          "type": "while_statement",
           "named": true
         }
       ]
@@ -312,61 +324,68 @@
   {
     "type": "function_def",
     "named": true,
-    "fields": {},
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "break_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "expr_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "func_decl",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "print_statement",
+            "named": true
+          },
+          {
+            "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "var_decl",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "expr_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
-          "named": true
-        },
-        {
-          "type": "func_decl",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "parameters",
-          "named": true
-        },
-        {
-          "type": "print_statement",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "var_decl",
-          "named": true
-        },
-        {
-          "type": "while_statement",
           "named": true
         }
       ]
@@ -375,57 +394,114 @@
   {
     "type": "if_statement",
     "named": true,
-    "fields": {},
+    "fields": {
+      "f_branch": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "break_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "expr_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "func_decl",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "print_statement",
+            "named": true
+          },
+          {
+            "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "var_decl",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      },
+      "t_branch": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "break_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "expr_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "func_decl",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "print_statement",
+            "named": true
+          },
+          {
+            "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "var_decl",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "equality",
-          "named": true
-        },
-        {
-          "type": "expr_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
-          "named": true
-        },
-        {
-          "type": "func_decl",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "print_statement",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "var_decl",
-          "named": true
-        },
-        {
-          "type": "while_statement",
+          "type": "or",
           "named": true
         }
       ]
@@ -509,11 +585,11 @@
           "named": true
         },
         {
-          "type": "literal",
+          "type": "nil",
           "named": true
         },
         {
-          "type": "nil",
+          "type": "number",
           "named": true
         },
         {
@@ -612,16 +688,17 @@
   {
     "type": "return_statement",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "lambda",
-          "named": true
-        }
-      ]
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "lambda",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -680,57 +757,64 @@
   {
     "type": "while_statement",
     "named": true,
-    "fields": {},
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "break_statement",
+            "named": true
+          },
+          {
+            "type": "continue_statement",
+            "named": true
+          },
+          {
+            "type": "expr_statement",
+            "named": true
+          },
+          {
+            "type": "for_statement",
+            "named": true
+          },
+          {
+            "type": "func_decl",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "print_statement",
+            "named": true
+          },
+          {
+            "type": "return_statement",
+            "named": true
+          },
+          {
+            "type": "var_decl",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "expr_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
-          "named": true
-        },
-        {
-          "type": "func_decl",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
           "type": "or",
-          "named": true
-        },
-        {
-          "type": "print_statement",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "var_decl",
-          "named": true
-        },
-        {
-          "type": "while_statement",
           "named": true
         }
       ]
@@ -874,16 +958,16 @@
     "named": false
   },
   {
-    "type": "literal",
-    "named": true
-  },
-  {
     "type": "nil",
     "named": true
   },
   {
     "type": "not",
     "named": false
+  },
+  {
+    "type": "number",
+    "named": true
   },
   {
     "type": "or",

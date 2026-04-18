@@ -40,7 +40,7 @@ module.exports = grammar({
       '(',
       optional($.parameters),
       ')',
-      repeat($._declaration),
+      field('body', repeat($._declaration)),
       'end',
     ),
 
@@ -58,22 +58,22 @@ module.exports = grammar({
     ),
 
     _statement: $ => choice(
-      $.expr_statement,
-      $.print_statement,
-      $.block,
       $.if_statement,
       $.while_statement,
       $.for_statement,
+      $.block,
+      $.print_statement,
       $.return_statement,
       $.break_statement,
       $.continue_statement,
+      $.expr_statement
     ),
 
     continue_statement: $ => seq('continue', ';'),
     
     break_statement: $ => seq('break', ';'),
     
-    return_statement: $ => seq('return', optional($.lambda), ';'),
+    return_statement: $ => seq('return', field('value', optional($.lambda)), ';'),
     
     // Updated for statement with proper range syntax
     for_statement: $ => seq(
@@ -82,7 +82,7 @@ module.exports = grammar({
       'in',
       $.range,
       'do',
-      repeat($._declaration),
+      field('body', repeat($._declaration)),
       'end',
     ),
 
@@ -100,24 +100,24 @@ module.exports = grammar({
       'while',
       $.or,
       'do',
-      repeat($._declaration),
+      field('body', repeat($._declaration)),
       'end',
     ),
 
     if_statement: $ => seq(
       'if',
-      $.equality,
+      $.or,
       'then',
-      repeat($._declaration),
+      field('t_branch', repeat($._declaration)),
       choice(
         'end',
-        seq('else', repeat($._declaration), 'end'),
+        seq('else', field('f_branch', repeat($._declaration)), 'end')
       ),
     ),
 
     block: $ => seq(
       'begin',
-      repeat($._declaration),
+      field('body', repeat($._declaration)),
       'end',
       ';',
     ),
@@ -191,7 +191,7 @@ module.exports = grammar({
 
     call: $ => seq(
       $.primary,
-      repeat(seq('(', optional($.arguments), ')')),
+      repeat1(seq('(', optional($.arguments), ')')),
     ),
 
     arguments: $ => seq(
@@ -200,7 +200,7 @@ module.exports = grammar({
     ),
 
     primary: $ => choice(
-      $.literal,
+      $.number,
       $.string,
       $.boolean,
       $.nil,
@@ -209,18 +209,18 @@ module.exports = grammar({
       $.conditional,
     ),
 
-    conditional: $ => prec(10, seq(
+    conditional: $ => prec(1, seq(
       'if',
       $.or,
       'then',
-      $.or,
+      $.lambda,
       'else',
-      $.or,
+      $.lambda,
       'end',
     )),
 
     // Lexical tokens
-    literal: $ => /[0-9]+(?:\.[0-9]+)?/,
+    number: $ => /[0-9]+(?:\.[0-9]+)?/,
     string: $ => /"[^"]*"/,
     boolean: $ => choice('true', 'false'),
     nil: $ => 'nil',

@@ -42,22 +42,25 @@
 "," @punctuation.delimiter
 
 ; Literals
-(literal) @number
+(number) @number
 (string) @string
-(boolean) @constant.builtin
-(nil) @constant.builtin
+(boolean) @constant
+(nil) @constant
 
 ; Identifiers
 (identifier) @variable
 
 ; Function definitions
 (function_def
-  identifier: (identifier) @function)
+  (identifier) @function)
 
 ; Function calls
 (call
-  function: (identifier) @function.call)
+  (primary (identifier) @function.call))
 
 ; Parameters
 (parameters
   (identifier) @parameter)
+
+; Comments
+(comment) @comment
