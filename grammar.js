@@ -1,5 +1,14 @@
+/**
+ * @file Un grammar for tree-sitter
+ * @author ptrrr1 <ptrrrdev@gmail.com>
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 module.exports = grammar({
-  name: 'your_language_name',
+  name: 'un',
 
   extras: $ => [
     /\s/,
@@ -24,7 +33,7 @@ module.exports = grammar({
       $._statement,
     ),
 
-    func_decl: $ => seq('fun', $.function_def),
+    func_decl: $ => seq('fn', $.function_def),
 
     function_def: $ => seq(
       $.identifier,
@@ -81,15 +90,9 @@ module.exports = grammar({
     range: $ => seq(
       '[',
       $.or,  // start expression
-      '..',
-      choice(
-        '<', '>'
-      ),
+      seq('..', choice('<', '>')),
       $.or,
-      optional(
-        ';',
-        $.or
-      ),
+      optional(seq(';', $.or)),
       ']',
     ),
 
@@ -107,7 +110,7 @@ module.exports = grammar({
       'then',
       repeat($._declaration),
       choice(
-        seq('end'),
+        'end',
         seq('else', repeat($._declaration), 'end'),
       ),
     ),
@@ -131,18 +134,24 @@ module.exports = grammar({
 
     expression: $ => $.assignment,
 
-    assignment: $ => prec.right(1, seq(
-      $.identifier,
-      '=',
-      $.assignment,
+    assignment: $ => prec.right(1, choice(
+      seq(
+        $.identifier,
+        '=',
+        $.assignment,
+      ),
+      $.lambda
     )),
 
-    lambda: $ => prec(2, seq(
-      'fn',
-      '(',
-      optional($.parameters),
-      ')',
-      $.lambda,
+    lambda: $ => prec(2, choice(
+      seq(
+        'fn',
+        '(',
+        optional($.parameters),
+        ')',
+        $.lambda,
+      ),
+      $.or
     )),
 
     or: $ => prec.left(3, seq(
@@ -177,7 +186,7 @@ module.exports = grammar({
 
     unary: $ => prec(9, choice(
       seq(choice('not', '-'), $.unary),
-      $.primary,
+      $.call,
     )),
 
     call: $ => seq(
