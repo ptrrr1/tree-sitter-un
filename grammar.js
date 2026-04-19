@@ -119,7 +119,6 @@ module.exports = grammar({
       'begin',
       field('body', repeat($._declaration)),
       'end',
-      ';',
     ),
 
     print_statement: $ => seq(
@@ -191,7 +190,7 @@ module.exports = grammar({
 
     call: $ => seq(
       $.primary,
-      repeat1(seq('(', optional($.arguments), ')')),
+      repeat(seq('(', optional($.arguments), ')')),
     ),
 
     arguments: $ => seq(

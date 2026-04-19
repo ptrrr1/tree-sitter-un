@@ -56,7 +56,11 @@
 
 ; Function calls
 (call
-  (primary (identifier) @function.call))
+  (primary (identifier)) @function
+  "(" @punctuation.bracket
+  (arguments (_ (identifier) @variable))? @parameter
+  ")" @punctuation.bracket
+) 
 
 ; Parameters
 (parameters
